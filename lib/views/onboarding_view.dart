@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:note_app/constants.dart';
+import 'package:note_app/views/home_view.dart';
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
@@ -9,7 +10,7 @@ class OnboardingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       // bottomNavigationBar: Padding(
       //   padding: EdgeInsets.only(bottom: 40.h),
       //   child: ElevatedButton(
@@ -75,7 +76,9 @@ class OnboardingView extends StatelessWidget {
                     minimumSize: Size(75.w, 75.h),
                     backgroundColor: PrimaryColors.kPrimaryColor,
                     shape: const CircleBorder()),
-                onPressed: () {},
+                onPressed: () {
+                 Navigator.pushNamed(context, HomeView.id);
+                },
                 child: const Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.white,

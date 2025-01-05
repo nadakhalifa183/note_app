@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:note_app/constants.dart';
+import 'package:note_app/views/home_view.dart';
 import 'package:note_app/views/onboarding_view.dart';
 
 void main() {
@@ -17,9 +18,15 @@ class MyApp extends StatelessWidget {
       designSize: const Size(FigmaDesign.widthScreen,FigmaDesign.heightScreen),
       minTextAdapt: true,
       child: MaterialApp(
+        theme: ThemeData(
+          brightness: Brightness.light,
+       scaffoldBackgroundColor: Colors.white
+       ),
         debugShowCheckedModeBanner: false,
+        
         routes: {
-          OnboardingView.id : (context)=> const OnboardingView()
+          OnboardingView.id : (context)=> const OnboardingView(),
+          HomeView.id : (context)=> const HomeView()
         },
         initialRoute: OnboardingView.id,
        ),
