@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:note_app/constants.dart';
+import 'package:note_app/views/edit_note_view.dart';
 import 'package:note_app/views/home_view.dart';
 import 'package:note_app/views/onboarding_view.dart';
 
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         
         routes: {
           OnboardingView.id : (context)=> const OnboardingView(),
-          HomeView.id : (context)=> const HomeView()
+          HomeView.id : (context)=> const HomeView(),
+          EditNoteView.id : (context)=> const EditNoteView()
         },
         initialRoute: OnboardingView.id,
        ),
