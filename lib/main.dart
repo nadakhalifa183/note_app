@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/constants.dart';
+import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/edit_note_view.dart';
 import 'package:note_app/views/home_view.dart';
 import 'package:note_app/views/onboarding_view.dart';
@@ -10,6 +11,7 @@ import 'package:note_app/views/onboarding_view.dart';
 void main()  async {  
   await Hive.initFlutter(); 
   await Hive.openBox(kNotesBox) ;
+  Hive.registerAdapter(NoteModelAdapter());
   runApp(const MyApp());
 }
 
