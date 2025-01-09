@@ -25,4 +25,16 @@ class SimpleBlocObserver extends BlocObserver {
     super.onTransition(bloc, transition);
     // TODO: implement onChange
   }
+
+  @override
+   void onClose(BlocBase<dynamic> bloc) {
+      debugPrint("close =$bloc ");
+   }
+
+   @override
+  void onCreate(BlocBase bloc) {
+    // TODO: implement onCreate
+    super.onCreate(bloc);
+      debugPrint("create =$bloc ");
+  }
 }

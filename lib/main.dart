@@ -15,8 +15,9 @@ import 'package:note_app/views/onboarding_view.dart';
 void main()  async {  
   Bloc.observer = SimpleBlocObserver();
   await Hive.initFlutter(); 
+   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(kNotesBox) ;
-  Hive.registerAdapter(NoteModelAdapter());
+ 
   runApp(const MyApp());
 }
 
@@ -29,28 +30,18 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(  
       designSize: const Size(FigmaDesign.widthScreen, FigmaDesign.heightScreen),  
       minTextAdapt: true,  
-      child: MultiBlocProvider(  
-        providers: [  
-          BlocProvider(  
-            create: (context) => AddNoteCubit(),  
-          ),  
-          // BlocProvider(  
-          //   create: (context) => AnotherBloc(),
-          // ),  
-        ],  
-        child: MaterialApp(  
-          theme: ThemeData(  
-            brightness: Brightness.light,  
-            scaffoldBackgroundColor: Colors.white,  
-          ),  
-          debugShowCheckedModeBanner: false,  
-          routes: {  
-            OnboardingView.id: (context) => const OnboardingView(),  
-            HomeView.id: (context) => const HomeView(),  
-            EditNoteView.id: (context) => const EditNoteView(),  
-          },  
-          initialRoute: OnboardingView.id,  
+      child: MaterialApp(  
+        theme: ThemeData(  
+          brightness: Brightness.light,  
+          scaffoldBackgroundColor: Colors.white,  
         ),  
+        debugShowCheckedModeBanner: false,  
+        routes: {  
+          OnboardingView.id: (context) => const OnboardingView(),  
+          HomeView.id: (context) => const HomeView(),  
+          EditNoteView.id: (context) => const EditNoteView(),  
+        },  
+        initialRoute: OnboardingView.id,  
       ),  
     );  
   }  
