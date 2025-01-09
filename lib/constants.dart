@@ -9,3 +9,5 @@ static const double widthScreen = 375 ;
 static const double heightScreen = 812;
 
 }
+
+const kNotesBox = "notes_box" ;
