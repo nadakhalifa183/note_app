@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:note_app/constants.dart';
+import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/edit_note_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
-
+  const NoteItem({super.key, required this.note});
+final NoteModel note ;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -14,7 +15,7 @@ class NoteItem extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.only(top: 12.h,bottom: 16.h ,left: 12.w),
          decoration: BoxDecoration(
-          color: PrimaryColors.kPrimaryColor,
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16)
          ),
         child: Column(
@@ -22,7 +23,7 @@ class NoteItem extends StatelessWidget {
           children: [
             ListTile(
               title:  Text(
-                          "Note 1",
+                          note.title,
                           style: TextStyle(
                   fontFamily: "Otama-ep",
                      fontSize: 30.sp,
@@ -33,7 +34,7 @@ class NoteItem extends StatelessWidget {
                         subtitle:  Padding(
                           padding: const EdgeInsets.only(top: 12 , bottom: 12),
                           child: Text(
-                            "Use free text area, feel free to write it all Use free text area, feel free to write itarea,...........",
+                            note.subtitle,
                             style: TextStyle(
                                           fontFamily: "Roboto",
                                              fontSize: 12.sp,
@@ -46,11 +47,11 @@ class NoteItem extends StatelessWidget {
             ),
           Padding(
             padding: EdgeInsets.only(right:28.w),
-            child:const   Text(
+            child:   Text(
               
-              "22 April  2002" ,
+              note.date ,
               
-               style: TextStyle(color: Color.fromARGB(255, 196, 194, 194)),),
+               style:const TextStyle(color: Color.fromARGB(255, 196, 194, 194)),),
           )
           ],
         ),
