@@ -7,52 +7,58 @@ import 'package:note_app/views/edit_note_view.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({super.key, required this.note});
-final NoteModel note ;
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context , EditNoteView.id),
+      onTap: () => Navigator.pushNamed(context, EditNoteView.id),
       child: Container(
-        padding: EdgeInsets.only(top: 12.h,bottom: 16.h ,left: 12.w),
-         decoration: BoxDecoration(
-          color: Color(note.color),
-          borderRadius: BorderRadius.circular(16)
-         ),
+        padding: EdgeInsets.only(top: 12.h, bottom: 16.h, left: 12.w),
+        decoration: BoxDecoration(
+            color: Color(note.color), borderRadius: BorderRadius.circular(16)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title:  Text(
-                          note.title,
-                          style: TextStyle(
+              title: Text(
+                note.title,
+                style: TextStyle(
                   fontFamily: "Otama-ep",
-                     fontSize: 30.sp,
-                        fontWeight: FontWeight.w400,
-                        color:Colors.white,
-                          ),
-                        ),
-                        subtitle:  Padding(
-                          padding: const EdgeInsets.only(top: 12 , bottom: 12),
-                          child: Text(
-                            note.subtitle,
-                            style: TextStyle(
-                                          fontFamily: "Roboto",
-                                             fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                          color:const Color.fromARGB(238, 177, 177, 177),
-                            ),
-                          ),
-                        ),
-                        trailing: IconButton(onPressed: (){}, icon: const Icon(FontAwesomeIcons.trash , color: Colors.white,size: 24,)),
+                  fontSize: 30.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(top: 12, bottom: 12),
+                child: Text(
+                  note.subtitle,
+                  style: TextStyle(
+                    fontFamily: "Roboto",
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: const Color.fromARGB(238, 177, 177, 177),
+                  ),
+                ),
+              ),
+              trailing: IconButton(
+                  onPressed: () {
+                    note.delete();
+                  },
+                  icon: const Icon(
+                    FontAwesomeIcons.trash,
+                    color: Colors.white,
+                    size: 24,
+                  )),
             ),
-          Padding(
-            padding: EdgeInsets.only(right:28.w),
-            child:   Text(
-              
-              note.date ,
-              
-               style:const TextStyle(color: Color.fromARGB(255, 196, 194, 194)),),
-          )
+            Padding(
+              padding: EdgeInsets.only(right: 28.w),
+              child: Text(
+                note.date,
+                style:
+                    const TextStyle(color: Color.fromARGB(255, 196, 194, 194)),
+              ),
+            )
           ],
         ),
       ),
