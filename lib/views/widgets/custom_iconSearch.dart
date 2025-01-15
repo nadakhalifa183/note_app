@@ -4,9 +4,10 @@ import 'package:note_app/constants.dart';
 
 class CustomIconSearch extends StatelessWidget {
   const CustomIconSearch({
-    super.key, required this.icon,
+    super.key, required this.icon, this.onPressed,
   });
  final IconData icon ;
+ final void Function()? onPressed ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,6 +17,8 @@ class CustomIconSearch extends StatelessWidget {
         color: PrimaryColors.kPrimaryColor.withOpacity(.9),
         borderRadius: BorderRadius.circular(12)
       ),
-      child: Icon(icon , color: Colors.white,size:22.sp,));
+      child: IconButton(
+        onPressed: onPressed,
+        icon:Icon(icon , color: Colors.white,size:22.sp),));
   }
 }

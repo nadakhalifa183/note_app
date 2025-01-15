@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           routes: {
             OnboardingView.id: (context) => const OnboardingView(),
             HomeView.id: (context) => const HomeView(),
-            EditNoteView.id: (context) => const EditNoteView(),
+            // EditNoteView.id: (context) => const EditNoteView(),
           },
           initialRoute: OnboardingView.id,
         ),
