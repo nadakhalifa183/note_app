@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/constants.dart';
+import 'package:note_app/cubits/add_note_cubit/add_note_cubit.dart';
+
 
 class ColorItem extends StatelessWidget {
   const ColorItem({super.key, required this.isActive, required this.color});
@@ -39,7 +42,9 @@ class _ColorListViewState extends State<ColorListView> {
     Color(0xff00532d),
     Color(0xff028476),
     Color(0xffd9ce88),
+    Color(0xff6d5542),
     Color(0xff2c332d),
+    Color(0xff6d5542),
   ];
   @override
   Widget build(BuildContext context) {
@@ -54,6 +59,7 @@ class _ColorListViewState extends State<ColorListView> {
             child: GestureDetector(
               onTap: () {
                 currentIndex = index;
+                 BlocProvider.of<AddNoteCubit>(context).color = colors[index];
                 setState(() {});
               },
               child: ColorItem(
